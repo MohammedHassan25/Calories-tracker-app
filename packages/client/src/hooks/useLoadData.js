@@ -21,7 +21,6 @@ export const LOAD_RECORDS = async (apiUrl, setRecords, setError, setLoading) => 
       }))
     );
   } catch (error) {
-    setError(error.message);
     localStorage.setItem("records", JSON.stringify([{
       id: 1,
       date: Date.now("yyyy-MM-dd"),

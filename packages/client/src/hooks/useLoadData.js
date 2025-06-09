@@ -21,27 +21,7 @@ export const LOAD_RECORDS = async (apiUrl, setRecords, setError, setLoading) => 
       }))
     );
   } catch (error) {
-    localStorage.setItem("records", JSON.stringify([{
-      id: 1,
-      date: `${new Date().toISOString().split("T")[0]}`,
-      meal: "Breakfast",
-      content: "Sample Food",
-      calories: 200,
-    }]));
-    const data = localStorage.getItem("records");
-    if (data) {
-      setRecords(
-        JSON.parse(data).map((record) => ({
-          id: record.id,
-          date: record.r_date,
-          meal: record.r_meal,
-          content: record.r_food,
-          calories: record.r_cal,
-        }))
-      );
-    } else {
-      setRecords([]);
-    }
+    setError(error.message);
   } finally {
     setLoading(false);
   }

@@ -22,6 +22,7 @@ export const LOAD_RECORDS = async (apiUrl, setRecords, setError, setLoading) => 
     );
   } catch (error) {
     setError(error.message);
+    localStorage.setItem("records", JSON.stringify([]));
     const data = localStorage.getItem("records");
     if (data) {
       setRecords(

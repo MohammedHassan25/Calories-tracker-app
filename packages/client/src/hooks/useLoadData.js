@@ -22,7 +22,13 @@ export const LOAD_RECORDS = async (apiUrl, setRecords, setError, setLoading) => 
     );
   } catch (error) {
     setError(error.message);
-    localStorage.setItem("records", JSON.stringify([]));
+    localStorage.setItem("records", JSON.stringify([{
+      id: 1,
+      date: Date.now("yyyy-MM-dd"),
+      meal: "Breakfast",
+      content: "Sample Food",
+      calories: 200,
+    }]));
     const data = localStorage.getItem("records");
     if (data) {
       setRecords(

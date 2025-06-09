@@ -22,6 +22,20 @@ export const LOAD_RECORDS = async (apiUrl, setRecords, setError, setLoading) => 
     );
   } catch (error) {
     setError(error.message);
+    const data = localStorage.getItem("records");
+    if (data) {
+      setRecords(
+        JSON.parse(data).map((record) => ({
+          id: record.id,
+          date: record.r_date,
+          meal: record.r_meal,
+          content: record.r_food,
+          calories: record.r_cal,
+        }))
+      );
+    } else {
+      setRecords([]);
+    }
   } finally {
     setLoading(false);
   }

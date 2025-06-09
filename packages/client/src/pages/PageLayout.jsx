@@ -4,7 +4,6 @@ import styles from "./PageLayout.module.css";
 
 export function PageLayout() {
   const width =  document.body
-  console.log(width)
   return (
     <div className={styles.layout}>
       <SideNav />
